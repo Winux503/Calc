@@ -76,9 +76,20 @@ namespace Calc_Step1
 
             }
             isAfterEqual = true;
-            if (lastOp  == '+')
+            switch (lastOp)
             {
-                currentAnswer += lastValueEntered;
+                case '+':
+                    currentAnswer += lastValueEntered;
+                    break;
+                case '-':
+                    currentAnswer -= lastValueEntered;
+                    break;
+                case '/':
+                    currentAnswer /= lastValueEntered;
+                    break;
+                case '*':
+                    currentAnswer *= lastValueEntered;
+                    break;
             }
             txtDisplay.Text = currentAnswer.ToString();
             isFirstValue = true;
