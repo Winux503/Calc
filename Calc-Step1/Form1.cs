@@ -239,7 +239,7 @@ namespace Calc_Step1
 
         private void btnOpt_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(802, 435);
+            this.Size = new Size(635, 435);
         }
 
         private void btnRed_Click(object sender, EventArgs e)
@@ -269,7 +269,7 @@ namespace Calc_Step1
 
         private void btnOpt2_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(502, 435);
+            this.Size = new Size(413, 435);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -290,6 +290,12 @@ namespace Calc_Step1
         private void btnTxtRes_Click(object sender, EventArgs e)
         {
             txtDisplay.ForeColor = Color.Aquamarine;
+        }
+
+        private void About_Click(object sender, EventArgs e)
+        {
+            Form2 Second = new Form2();
+            Second.Show();
         }
     }
 }
