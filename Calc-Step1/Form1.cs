@@ -236,5 +236,60 @@ namespace Calc_Step1
         {
             btnDP.Enabled = !txtDisplay.Text.Contains(".");
         }
+
+        private void btnOpt_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(802, 435);
+        }
+
+        private void btnRed_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightPink;
+        }
+
+        private void btnBlue_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightBlue;
+        }
+
+        private void btnGreen_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkSeaGreen;
+        }
+
+        private void btnGrey_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightSlateGray;
+        }
+
+        private void btnColRes_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(240,240,240);
+        }
+
+        private void btnOpt2_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(502, 435);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Blue;
+        }
+
+        private void btnTxtWhite_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.White;
+        }
+
+        private void btnTxtYellow_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Yellow;
+        }
+
+        private void btnTxtRes_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Aquamarine;
+        }
     }
 }

@@ -53,6 +53,21 @@
             this.btnBksp = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
+            this.btnOpt = new System.Windows.Forms.Button();
+            this.cusBox = new System.Windows.Forms.GroupBox();
+            this.btnTxtBlue = new System.Windows.Forms.Button();
+            this.btnTxtWhite = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnOpt2 = new System.Windows.Forms.Button();
+            this.btnColRes = new System.Windows.Forms.Button();
+            this.btnGrey = new System.Windows.Forms.Button();
+            this.btnGreen = new System.Windows.Forms.Button();
+            this.btnBlue = new System.Windows.Forms.Button();
+            this.btnRed = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTxtYellow = new System.Windows.Forms.Button();
+            this.btnTxtRes = new System.Windows.Forms.Button();
+            this.cusBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtDisplay
@@ -320,12 +335,163 @@
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
+            // btnOpt
+            // 
+            this.btnOpt.Location = new System.Drawing.Point(448, 66);
+            this.btnOpt.Name = "btnOpt";
+            this.btnOpt.Size = new System.Drawing.Size(26, 27);
+            this.btnOpt.TabIndex = 24;
+            this.btnOpt.Text = "...";
+            this.btnOpt.UseVisualStyleBackColor = true;
+            this.btnOpt.Click += new System.EventHandler(this.btnOpt_Click);
+            // 
+            // cusBox
+            // 
+            this.cusBox.Controls.Add(this.btnTxtRes);
+            this.cusBox.Controls.Add(this.btnTxtYellow);
+            this.cusBox.Controls.Add(this.btnTxtBlue);
+            this.cusBox.Controls.Add(this.btnTxtWhite);
+            this.cusBox.Controls.Add(this.label2);
+            this.cusBox.Controls.Add(this.btnOpt2);
+            this.cusBox.Controls.Add(this.btnColRes);
+            this.cusBox.Controls.Add(this.btnGrey);
+            this.cusBox.Controls.Add(this.btnGreen);
+            this.cusBox.Controls.Add(this.btnBlue);
+            this.cusBox.Controls.Add(this.btnRed);
+            this.cusBox.Controls.Add(this.label1);
+            this.cusBox.Location = new System.Drawing.Point(574, 12);
+            this.cusBox.Name = "cusBox";
+            this.cusBox.Size = new System.Drawing.Size(200, 372);
+            this.cusBox.TabIndex = 25;
+            this.cusBox.TabStop = false;
+            this.cusBox.Text = "Customization";
+            // 
+            // btnTxtBlue
+            // 
+            this.btnTxtBlue.Location = new System.Drawing.Point(6, 242);
+            this.btnTxtBlue.Name = "btnTxtBlue";
+            this.btnTxtBlue.Size = new System.Drawing.Size(188, 23);
+            this.btnTxtBlue.TabIndex = 10;
+            this.btnTxtBlue.Text = "Blue";
+            this.btnTxtBlue.UseVisualStyleBackColor = true;
+            this.btnTxtBlue.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnTxtWhite
+            // 
+            this.btnTxtWhite.Location = new System.Drawing.Point(6, 213);
+            this.btnTxtWhite.Name = "btnTxtWhite";
+            this.btnTxtWhite.Size = new System.Drawing.Size(188, 23);
+            this.btnTxtWhite.TabIndex = 9;
+            this.btnTxtWhite.Text = "White";
+            this.btnTxtWhite.UseVisualStyleBackColor = true;
+            this.btnTxtWhite.Click += new System.EventHandler(this.btnTxtWhite_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 193);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Text colour";
+            // 
+            // btnOpt2
+            // 
+            this.btnOpt2.Location = new System.Drawing.Point(6, 343);
+            this.btnOpt2.Name = "btnOpt2";
+            this.btnOpt2.Size = new System.Drawing.Size(80, 23);
+            this.btnOpt2.TabIndex = 7;
+            this.btnOpt2.Text = "Close Options";
+            this.btnOpt2.UseVisualStyleBackColor = true;
+            this.btnOpt2.Click += new System.EventHandler(this.btnOpt2_Click);
+            // 
+            // btnColRes
+            // 
+            this.btnColRes.Location = new System.Drawing.Point(6, 148);
+            this.btnColRes.Name = "btnColRes";
+            this.btnColRes.Size = new System.Drawing.Size(188, 23);
+            this.btnColRes.TabIndex = 6;
+            this.btnColRes.Text = "Reset Colours";
+            this.btnColRes.UseVisualStyleBackColor = true;
+            this.btnColRes.Click += new System.EventHandler(this.btnColRes_Click);
+            // 
+            // btnGrey
+            // 
+            this.btnGrey.Location = new System.Drawing.Point(6, 119);
+            this.btnGrey.Name = "btnGrey";
+            this.btnGrey.Size = new System.Drawing.Size(188, 23);
+            this.btnGrey.TabIndex = 5;
+            this.btnGrey.Text = "Grey";
+            this.btnGrey.UseVisualStyleBackColor = true;
+            this.btnGrey.Click += new System.EventHandler(this.btnGrey_Click);
+            // 
+            // btnGreen
+            // 
+            this.btnGreen.Location = new System.Drawing.Point(6, 90);
+            this.btnGreen.Name = "btnGreen";
+            this.btnGreen.Size = new System.Drawing.Size(188, 23);
+            this.btnGreen.TabIndex = 4;
+            this.btnGreen.Text = "Green";
+            this.btnGreen.UseVisualStyleBackColor = true;
+            this.btnGreen.Click += new System.EventHandler(this.btnGreen_Click);
+            // 
+            // btnBlue
+            // 
+            this.btnBlue.Location = new System.Drawing.Point(6, 61);
+            this.btnBlue.Name = "btnBlue";
+            this.btnBlue.Size = new System.Drawing.Size(188, 23);
+            this.btnBlue.TabIndex = 3;
+            this.btnBlue.Text = "Blue";
+            this.btnBlue.UseVisualStyleBackColor = true;
+            this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
+            // 
+            // btnRed
+            // 
+            this.btnRed.Location = new System.Drawing.Point(6, 32);
+            this.btnRed.Name = "btnRed";
+            this.btnRed.Size = new System.Drawing.Size(188, 23);
+            this.btnRed.TabIndex = 2;
+            this.btnRed.Text = "Pink";
+            this.btnRed.UseVisualStyleBackColor = true;
+            this.btnRed.Click += new System.EventHandler(this.btnRed_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Colours";
+            // 
+            // btnTxtYellow
+            // 
+            this.btnTxtYellow.Location = new System.Drawing.Point(6, 271);
+            this.btnTxtYellow.Name = "btnTxtYellow";
+            this.btnTxtYellow.Size = new System.Drawing.Size(188, 23);
+            this.btnTxtYellow.TabIndex = 11;
+            this.btnTxtYellow.Text = "Yellow";
+            this.btnTxtYellow.UseVisualStyleBackColor = true;
+            this.btnTxtYellow.Click += new System.EventHandler(this.btnTxtYellow_Click);
+            // 
+            // btnTxtRes
+            // 
+            this.btnTxtRes.Location = new System.Drawing.Point(6, 300);
+            this.btnTxtRes.Name = "btnTxtRes";
+            this.btnTxtRes.Size = new System.Drawing.Size(188, 23);
+            this.btnTxtRes.TabIndex = 12;
+            this.btnTxtRes.Text = "Reset Colours";
+            this.btnTxtRes.UseVisualStyleBackColor = true;
+            this.btnTxtRes.Click += new System.EventHandler(this.btnTxtRes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(486, 396);
+            this.Controls.Add(this.cusBox);
+            this.Controls.Add(this.btnOpt);
             this.Controls.Add(this.btnSign);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBksp);
@@ -354,6 +520,8 @@
             this.Name = "Form1";
             this.Text = "Simple Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.cusBox.ResumeLayout(false);
+            this.cusBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,6 +553,20 @@
         private System.Windows.Forms.Button btnBksp;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSign;
+        private System.Windows.Forms.Button btnOpt;
+        private System.Windows.Forms.GroupBox cusBox;
+        private System.Windows.Forms.Button btnBlue;
+        private System.Windows.Forms.Button btnRed;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGreen;
+        private System.Windows.Forms.Button btnGrey;
+        private System.Windows.Forms.Button btnColRes;
+        private System.Windows.Forms.Button btnOpt2;
+        private System.Windows.Forms.Button btnTxtBlue;
+        private System.Windows.Forms.Button btnTxtWhite;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnTxtYellow;
+        private System.Windows.Forms.Button btnTxtRes;
     }
 }
 
