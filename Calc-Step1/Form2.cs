@@ -12,14 +12,21 @@ namespace Calc_Step1
 {
     public partial class Form2 : Form
     {
+        
         public Form2()
         {
             InitializeComponent();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();   
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

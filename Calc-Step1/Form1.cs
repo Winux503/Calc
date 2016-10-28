@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Calc_Step1
@@ -89,6 +90,27 @@ namespace Calc_Step1
                     break;
                 case '*':
                     currentAnswer *= lastValueEntered;
+                    break;
+                case 'S':
+                    currentAnswer = Math.Sqrt(lastValueEntered);
+                    break;
+                case 'L':
+                    currentAnswer = Math.Log(lastValueEntered);
+                    break;
+                case 'E':
+                    currentAnswer = Math.Sin(lastValueEntered);
+                    break;
+                case 'C':
+                    currentAnswer = Math.Cos(lastValueEntered);
+                    break;
+                case 'T':
+                    currentAnswer = Math.Tan(lastValueEntered);
+                    break;
+                case 'P':
+                    currentAnswer = Math.Pow(currentAnswer, lastValueEntered);
+                    break;
+                case 'A':
+                    currentAnswer = Math.Abs(lastValueEntered);
                     break;
             }
             txtDisplay.Text = currentAnswer.ToString();
@@ -188,15 +210,38 @@ namespace Calc_Step1
                     case '*':
                         currentAnswer *= lastValueEntered;
                         break;
+                    case 'S':
+                        currentAnswer = Math.Sqrt(lastValueEntered);
+                        break;
+                    case 'L':
+                        currentAnswer = Math.Log(lastValueEntered);
+                        break;
+                    case 'E':
+                        currentAnswer = Math.Sin(lastValueEntered);
+                        break;
+                    case 'C':
+                        currentAnswer = Math.Cos(lastValueEntered);
+                        break;
+                    case 'T':
+                        currentAnswer = Math.Tan(lastValueEntered);
+                        break;
+                    case 'P':
+                        currentAnswer = Math.Pow(currentAnswer, lastValueEntered);
+                        break;
+                    case 'A':
+                        currentAnswer = Math.Abs(lastValueEntered);
+                        break;
                 }
             }
         }
-
+        
         private void btn_Click(object sender, EventArgs e)
         {
+
             Button button = (Button)sender;
             string digit = button.Text;
-            if(clearDisplay)
+
+            if (clearDisplay)
             {
                 txtDisplay.Text = digit;
                 clearDisplay = false;
@@ -237,9 +282,22 @@ namespace Calc_Step1
             btnDP.Enabled = !txtDisplay.Text.Contains(".");
         }
 
+        /// <summary>
+        /// Below is all of the calculator options
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnOpt_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(635, 435);
+            for (int i = 413; i <= 635; i++)
+            {
+                i++;
+                i++;
+                this.Size = new Size(i , 477);
+                Thread.Sleep(1);
+                //this.Size = new Size(635, 435);
+            }
         }
 
         private void btnRed_Click(object sender, EventArgs e)
@@ -269,7 +327,12 @@ namespace Calc_Step1
 
         private void btnOpt2_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(413, 435);
+            for (int i = 635; i >= 413; --i)
+            {
+               --i;
+               this.Size = new Size(i, 477);
+               Thread.Sleep(1);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -296,6 +359,48 @@ namespace Calc_Step1
         {
             Form2 Second = new Form2();
             Second.Show();
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'L';
+        }
+
+        private void btnSqrt_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'S';
+        }
+
+        private void btnSin_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'E';
+        }
+
+        private void btnCos_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'C';
+        }
+
+        private void btnTan_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'T';
+        }
+
+        private void btnPow_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'P';
+        }
+
+        private void btnAbs_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'A';
         }
     }
 }
