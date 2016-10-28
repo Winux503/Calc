@@ -74,7 +74,10 @@
             this.btnCos = new System.Windows.Forms.Button();
             this.btnTan = new System.Windows.Forms.Button();
             this.btnPow = new System.Windows.Forms.Button();
-            this.btnAbs = new System.Windows.Forms.Button();
+            this.btnCycle = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnRound = new System.Windows.Forms.Button();
+            this.btnPi = new System.Windows.Forms.Button();
             this.cusBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -345,6 +348,7 @@
             // 
             // cusBox
             // 
+            this.cusBox.Controls.Add(this.btnCycle);
             this.cusBox.Controls.Add(this.About);
             this.cusBox.Controls.Add(this.btnTxtRes);
             this.cusBox.Controls.Add(this.btnTxtYellow);
@@ -569,16 +573,41 @@
             this.btnPow.UseVisualStyleBackColor = true;
             this.btnPow.Click += new System.EventHandler(this.btnPow_Click);
             // 
-            // btnAbs
+            // btnCycle
             // 
-            this.btnAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbs.Location = new System.Drawing.Point(166, 384);
-            this.btnAbs.Name = "btnAbs";
-            this.btnAbs.Size = new System.Drawing.Size(207, 45);
-            this.btnAbs.TabIndex = 32;
-            this.btnAbs.Text = "Absolute Value";
-            this.btnAbs.UseVisualStyleBackColor = true;
-            this.btnAbs.Click += new System.EventHandler(this.btnAbs_Click);
+            this.btnCycle.Location = new System.Drawing.Point(6, 177);
+            this.btnCycle.Name = "btnCycle";
+            this.btnCycle.Size = new System.Drawing.Size(188, 23);
+            this.btnCycle.TabIndex = 14;
+            this.btnCycle.Text = "Cycle Colours";
+            this.btnCycle.UseVisualStyleBackColor = true;
+            this.btnCycle.Click += new System.EventHandler(this.btnCycle_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // btnRound
+            // 
+            this.btnRound.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRound.Location = new System.Drawing.Point(166, 384);
+            this.btnRound.Name = "btnRound";
+            this.btnRound.Size = new System.Drawing.Size(135, 45);
+            this.btnRound.TabIndex = 32;
+            this.btnRound.Text = "Round";
+            this.btnRound.UseVisualStyleBackColor = true;
+            this.btnRound.Click += new System.EventHandler(this.btnRound_Click);
+            // 
+            // btnPi
+            // 
+            this.btnPi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPi.Location = new System.Drawing.Point(309, 384);
+            this.btnPi.Name = "btnPi";
+            this.btnPi.Size = new System.Drawing.Size(64, 45);
+            this.btnPi.TabIndex = 33;
+            this.btnPi.Text = "PI";
+            this.btnPi.UseVisualStyleBackColor = true;
+            this.btnPi.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -586,7 +615,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(397, 438);
-            this.Controls.Add(this.btnAbs);
+            this.Controls.Add(this.btnPi);
+            this.Controls.Add(this.btnRound);
             this.Controls.Add(this.btnPow);
             this.Controls.Add(this.btnTan);
             this.Controls.Add(this.btnCos);
@@ -679,7 +709,10 @@
         private System.Windows.Forms.Button btnCos;
         private System.Windows.Forms.Button btnTan;
         private System.Windows.Forms.Button btnPow;
-        private System.Windows.Forms.Button btnAbs;
+        private System.Windows.Forms.Button btnCycle;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnRound;
+        private System.Windows.Forms.Button btnPi;
     }
 }
 

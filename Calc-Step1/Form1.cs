@@ -17,16 +17,15 @@ namespace Calc_Step1
         /// A simple calculator application, made in C#
         /// made by Samuel Tamplin as part of my computer security course
         /// </summary>
+        /// 
         public Form1()
         {
-            //starts the form
             InitializeComponent();
-            //sets the diplay text to 0
             txtDisplay.Text = "0";
-            
         }
+
         /// <summary>
-        /// Global variable declarations
+        /// declaration of public variables
         /// </summary>
         string secTxt;
         bool Isclicked = true;
@@ -37,13 +36,37 @@ namespace Calc_Step1
         double currentAnswer;
         double lastValueEntered;
         char lastOp;
+        bool Clicked = true;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //don't know why this is here
-            //I'm guessing it loads the form
+            
         }
 
+        //digit functions
+        private void btn_Click(object sender, EventArgs e)
+        {
+
+            Button button = (Button)sender;
+            string digit = button.Text;
+
+            if (clearDisplay)
+            {
+                txtDisplay.Text = digit;
+                clearDisplay = false;
+            }
+            else
+            {
+
+                txtDisplay.AppendText(digit);
+            }
+            if (isAfterEqual)
+            {
+                currentAnswer = 0.0;
+                lastOp = ' ';
+            }
+            isAfterEqual = false;
+        }
         private void btnDP_Click(object sender, EventArgs e)
         {
             if (clearDisplay)
@@ -62,127 +85,31 @@ namespace Calc_Step1
             }
             isAfterEqual = false;
         }
-
+        
+        //operator functions
         private void btnMulti_Click(object sender, EventArgs e)
         {
             OpHandler();
             lastOp = '*';
         }
-
-        private void btnEquals_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-           if(isAfterEqual == false)
-            {
-                lastValueEntered = double.Parse(txtDisplay.Text);
+            OpHandler();
+            lastOp = '+';
 
-            }
-            isAfterEqual = true;
-            switch (lastOp)
-            {
-                case '+':
-                    currentAnswer += lastValueEntered;
-                    break;
-                case '-':
-                    currentAnswer -= lastValueEntered;
-                    break;
-                case '/':
-                    currentAnswer /= lastValueEntered;
-                    break;
-                case '*':
-                    currentAnswer *= lastValueEntered;
-                    break;
-                case 'S':
-                    currentAnswer = Math.Sqrt(lastValueEntered);
-                    break;
-                case 'L':
-                    currentAnswer = Math.Log(lastValueEntered);
-                    break;
-                case 'E':
-                    currentAnswer = Math.Sin(lastValueEntered);
-                    break;
-                case 'C':
-                    currentAnswer = Math.Cos(lastValueEntered);
-                    break;
-                case 'T':
-                    currentAnswer = Math.Tan(lastValueEntered);
-                    break;
-                case 'P':
-                    currentAnswer = Math.Pow(currentAnswer, lastValueEntered);
-                    break;
-                case 'A':
-                    currentAnswer = Math.Abs(lastValueEntered);
-                    break;
-            }
-            txtDisplay.Text = currentAnswer.ToString();
-            isFirstValue = true;
         }
-
-        private void btnBksp_Click(object sender, EventArgs e)
+        private void btnSub_Click(object sender, EventArgs e)
         {
-            if(txtDisplay.Text.Length > 1)
-            {
-                
-                txtDisplay.Text = txtDisplay.Text.Substring(0, txtDisplay.Text.Length - 1);
-            }else
-            {
-                txtDisplay.Text = "0";
-            }
+            OpHandler();
+            lastOp = '-';
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnDiv_Click(object sender, EventArgs e)
         {
-            txtDisplay.Text = "0";
-            clearDisplay = true;
-            btnDP.Enabled = true;
-            isFirstValue = true;
-            isAfterEqual = false;
-            lastOp = ' ';
-            currentAnswer = 0.0;
+            OpHandler();
+            lastOp = '/';
         }
-
-        private void btnSign_Click(object sender, EventArgs e)
-        {
-            
-            string newTxt = "";
-            string oldTxt = txtDisplay.Text;
-            
-            if (Isclicked == true)
-            {
-                char sep = ' ';
-
-                txtDisplay.Text = "-" + sep + oldTxt;
-                string[] splitTxt = txtDisplay.Text.Split(sep);
-                newTxt = splitTxt[0] + splitTxt[1];
-                secTxt = splitTxt[1];
-                txtDisplay.Text = "-" + oldTxt;
-                Isclicked = false;
-            } else if (Isclicked == false)
-            {
-                txtDisplay.Text = secTxt;
-                Isclicked = true;
-            }
-        }
-
-        private void btnMclr_Click(object sender, EventArgs e)
-        {
-            memoryValue = 0.0;
-        }
-
-        private void btnMrec_Click(object sender, EventArgs e)
-        {
-            txtDisplay.Text = Convert.ToString(memoryValue);
-        }
-
-        private void btnMsub_Click(object sender, EventArgs e)
-        {
-            memoryValue -= Convert.ToDouble(txtDisplay.Text);
-        }
-
-        private void btnMadd_Click(object sender, EventArgs e)
-        {
-            memoryValue += Convert.ToDouble(txtDisplay.Text); 
-        }
-
+        
+        //maths functions
         private void OpHandler()
         {
             clearDisplay = true;
@@ -228,139 +155,133 @@ namespace Calc_Step1
                     case 'P':
                         currentAnswer = Math.Pow(currentAnswer, lastValueEntered);
                         break;
-                    case 'A':
-                        currentAnswer = Math.Abs(lastValueEntered);
+                    case 'R':
+                        currentAnswer = Math.Round(lastValueEntered);
+                        break;
+                    case 'I':
+                        currentAnswer = Math.PI;
                         break;
                 }
             }
         }
-        
-        private void btn_Click(object sender, EventArgs e)
+        private void btnEquals_Click(object sender, EventArgs e)
         {
+            if (isAfterEqual == false)
+            {
+                lastValueEntered = double.Parse(txtDisplay.Text);
 
-            Button button = (Button)sender;
-            string digit = button.Text;
+            }
+            isAfterEqual = true;
+            switch (lastOp)
+            {
+                case '+':
+                    currentAnswer += lastValueEntered;
+                    break;
+                case '-':
+                    currentAnswer -= lastValueEntered;
+                    break;
+                case '/':
+                    currentAnswer /= lastValueEntered;
+                    break;
+                case '*':
+                    currentAnswer *= lastValueEntered;
+                    break;
+                case 'S':
+                    currentAnswer = Math.Sqrt(lastValueEntered);
+                    break;
+                case 'L':
+                    currentAnswer = Math.Log(lastValueEntered);
+                    break;
+                case 'E':
+                    currentAnswer = Math.Sin(lastValueEntered);
+                    break;
+                case 'C':
+                    currentAnswer = Math.Cos(lastValueEntered);
+                    break;
+                case 'T':
+                    currentAnswer = Math.Tan(lastValueEntered);
+                    break;
+                case 'P':
+                    currentAnswer = Math.Pow(currentAnswer, lastValueEntered);
+                    break;
+                case 'R':
+                    currentAnswer = Math.Round(lastValueEntered);
+                    break;
 
-            if (clearDisplay)
-            {
-                txtDisplay.Text = digit;
-                clearDisplay = false;
-            }else
-            {
-                txtDisplay.AppendText(digit);
             }
-            if (isAfterEqual)
+            txtDisplay.Text = currentAnswer.ToString();
+            isFirstValue = true;
+        }
+
+        //additional functions
+        private void btnBksp_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Text.Length > 1)
             {
-                currentAnswer = 0.0;
-                lastOp = ' ';
+                txtDisplay.Text = txtDisplay.Text.Substring(0, txtDisplay.Text.Length - 1);
+                if (txtDisplay.Text.Length == 1)
+                {
+                    clearDisplay = true;
+                }
             }
+            else
+            {
+                txtDisplay.Text = "0";
+            }
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Text = "0";
+            clearDisplay = true;
+            btnDP.Enabled = true;
+            isFirstValue = true;
             isAfterEqual = false;
+            lastOp = ' ';
+            currentAnswer = 0.0;
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnSign_Click(object sender, EventArgs e)
         {
-            OpHandler();   
-            lastOp = '+';
-            //isAfterEqual = false;
-            //txtDisplay.Text = currentAnswer.ToString();
-        }
 
-        private void btnSub_Click(object sender, EventArgs e)
-        {
-            OpHandler();
-            lastOp = '-';
-        }
+            string newTxt = "";
+            string oldTxt = txtDisplay.Text;
 
-        private void btnDiv_Click(object sender, EventArgs e)
-        {
-            OpHandler();
-            lastOp = '/';
-        }
-
-        private void txtDisplay_TextChanged(object sender, EventArgs e)
-        {
-            btnDP.Enabled = !txtDisplay.Text.Contains(".");
-        }
-
-        /// <summary>
-        /// Below is all of the calculator options
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void btnOpt_Click(object sender, EventArgs e)
-        {
-            for (int i = 413; i <= 635; i++)
+            if (Isclicked == true)
             {
-                i++;
-                i++;
-                this.Size = new Size(i , 477);
-                Thread.Sleep(1);
-                //this.Size = new Size(635, 435);
+                char sep = ' ';
+
+                txtDisplay.Text = "-" + sep + oldTxt;
+                string[] splitTxt = txtDisplay.Text.Split(sep);
+                newTxt = splitTxt[0] + splitTxt[1];
+                secTxt = splitTxt[1];
+                txtDisplay.Text = "-" + oldTxt;
+                Isclicked = false;
+            }
+            else if (Isclicked == false)
+            {
+                txtDisplay.Text = secTxt;
+                Isclicked = true;
             }
         }
 
-        private void btnRed_Click(object sender, EventArgs e)
+        //memory functions
+        private void btnMclr_Click(object sender, EventArgs e)
         {
-            this.BackColor = Color.LightPink;
+            memoryValue = 0.0;
+        }
+        private void btnMrec_Click(object sender, EventArgs e)
+        {
+            txtDisplay.Text = Convert.ToString(memoryValue);
+        }
+        private void btnMsub_Click(object sender, EventArgs e)
+        {
+            memoryValue -= Convert.ToDouble(txtDisplay.Text);
+        }
+        private void btnMadd_Click(object sender, EventArgs e)
+        {
+            memoryValue += Convert.ToDouble(txtDisplay.Text);
         }
 
-        private void btnBlue_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.LightBlue;
-        }
-
-        private void btnGreen_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.DarkSeaGreen;
-        }
-
-        private void btnGrey_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.LightSlateGray;
-        }
-
-        private void btnColRes_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.FromArgb(240,240,240);
-        }
-
-        private void btnOpt2_Click(object sender, EventArgs e)
-        {
-            for (int i = 635; i >= 413; --i)
-            {
-               --i;
-               this.Size = new Size(i, 477);
-               Thread.Sleep(1);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            txtDisplay.ForeColor = Color.Blue;
-        }
-
-        private void btnTxtWhite_Click(object sender, EventArgs e)
-        {
-            txtDisplay.ForeColor = Color.White;
-        }
-
-        private void btnTxtYellow_Click(object sender, EventArgs e)
-        {
-            txtDisplay.ForeColor = Color.Yellow;
-        }
-
-        private void btnTxtRes_Click(object sender, EventArgs e)
-        {
-            txtDisplay.ForeColor = Color.Aquamarine;
-        }
-
-        private void About_Click(object sender, EventArgs e)
-        {
-            Form2 Second = new Form2();
-            Second.Show();
-        }
-
+        //scientific maths functions
         private void btnLog_Click(object sender, EventArgs e)
         {
             OpHandler();
@@ -372,35 +293,176 @@ namespace Calc_Step1
             OpHandler();
             lastOp = 'S';
         }
-
         private void btnSin_Click(object sender, EventArgs e)
         {
             OpHandler();
             lastOp = 'E';
         }
-
         private void btnCos_Click(object sender, EventArgs e)
         {
             OpHandler();
             lastOp = 'C';
         }
-
         private void btnTan_Click(object sender, EventArgs e)
         {
             OpHandler();
             lastOp = 'T';
         }
-
         private void btnPow_Click(object sender, EventArgs e)
         {
             OpHandler();
             lastOp = 'P';
         }
-
-        private void btnAbs_Click(object sender, EventArgs e)
+        private void btnRound_Click(object sender, EventArgs e)
         {
             OpHandler();
-            lastOp = 'A';
+            lastOp = 'R';
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpHandler();
+            lastOp = 'I';
+        }
+
+        //option handler
+        private void btnOpt_Click(object sender, EventArgs e)
+        {
+            for (int i = 413; i <= 635; i++)
+            {
+                i++;
+                i++;
+                this.Size = new Size(i, 477);
+                Thread.Sleep(1);
+
+            }
+            btnOpt.Enabled = false;
+        }
+        private void btnOpt2_Click(object sender, EventArgs e)
+        {
+            for (int i = 635; i >= 413; --i)
+            {
+                --i;
+                this.Size = new Size(i, 477);
+                Thread.Sleep(1);
+            }
+            btnOpt.Enabled = true;
+        }
+
+        //options
+        private void btnRed_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightPink;
+        }
+        private void btnBlue_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightBlue;
+        }
+        private void btnGreen_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkSeaGreen;
+        }
+        private void btnGrey_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.LightSlateGray;
+        }
+        private void btnColRes_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(240, 240, 240);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Blue;
+        }
+        private void btnTxtWhite_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.White;
+        }
+        private void btnTxtYellow_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Yellow;
+        }
+        private void btnTxtRes_Click(object sender, EventArgs e)
+        {
+            txtDisplay.ForeColor = Color.Aquamarine;
+        }
+        private void About_Click(object sender, EventArgs e)
+        {
+            Form2 Second = new Form2();
+            Second.Show();
+        }
+        private void btnCycle_Click(object sender, EventArgs e)
+        {
+
+            if (Clicked)
+            {
+                backgroundWorker1.RunWorkerAsync();
+                Clicked = false;
+            }
+            else
+            {
+                backgroundWorker1.CancelAsync();
+                backgroundWorker1.Dispose();
+            }
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            while (true)
+            {
+                int r = 0, g = 0, b = 0;
+                for (r = 0; r < 255; r++)
+                {
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        Clicked = true;
+                        this.BackColor = Color.FromArgb(240, 240, 240);
+                        break;
+                    }
+                    else
+                    {
+
+                        BackColor = Color.FromArgb(r, g, b);
+                        Thread.Sleep(10);
+                    }
+                }
+                for (g = 0; g < 255; g++)
+                {
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        Clicked = true;
+                        this.BackColor = Color.FromArgb(240, 240, 240);
+                    }
+                    else
+                    {
+
+                        BackColor = Color.FromArgb(r, g, b);
+                        Thread.Sleep(10);
+                    }
+                }
+                for (b = 0; b < 255; b++)
+                {
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        Clicked = true;
+                        this.BackColor = Color.FromArgb(240, 240, 240);
+                    }
+                    else
+                    {
+                        BackColor = Color.FromArgb(r, g, b);
+                        Thread.Sleep(10);
+                    }
+                }
+            }
+        }
+
+        //misc.
+        private void txtDisplay_TextChanged(object sender, EventArgs e)
+        {
+            btnDP.Enabled = !txtDisplay.Text.Contains(".");
         }
     }
 }
