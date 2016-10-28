@@ -287,7 +287,6 @@ namespace Calc_Step1
             OpHandler();
             lastOp = 'L';
         }
-
         private void btnSqrt_Click(object sender, EventArgs e)
         {
             OpHandler();
@@ -408,54 +407,31 @@ namespace Calc_Step1
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            while (true)
+            
+            Color[] colours =
             {
-                int r = 0, g = 0, b = 0;
-                for (r = 0; r < 255; r++)
+                Color.Blue,
+                Color.Red,
+                Color.Yellow,
+                Color.Green,
+                Color.Orange
+            };
+            int r = 0;
+            for (r = 0; r < 255; r++)
+            {
+                if (worker.CancellationPending == true)
                 {
-                    if (worker.CancellationPending == true)
-                    {
-                        e.Cancel = true;
-                        Clicked = true;
-                        this.BackColor = Color.FromArgb(240, 240, 240);
-                        break;
-                    }
-                    else
-                    {
-
-                        BackColor = Color.FromArgb(r, g, b);
-                        Thread.Sleep(10);
-                    }
+                    e.Cancel = true;
+                    Clicked = true;
+                    this.BackColor = Color.FromArgb(240, 240, 240);
+                    break;
                 }
-                for (g = 0; g < 255; g++)
+                else
                 {
-                    if (worker.CancellationPending == true)
-                    {
-                        e.Cancel = true;
-                        Clicked = true;
-                        this.BackColor = Color.FromArgb(240, 240, 240);
-                    }
-                    else
-                    {
-
-                        BackColor = Color.FromArgb(r, g, b);
-                        Thread.Sleep(10);
-                    }
+                    BackColor = colours[new Random().Next(0,4)];
+                    Thread.Sleep(500);
                 }
-                for (b = 0; b < 255; b++)
-                {
-                    if (worker.CancellationPending == true)
-                    {
-                        e.Cancel = true;
-                        Clicked = true;
-                        this.BackColor = Color.FromArgb(240, 240, 240);
-                    }
-                    else
-                    {
-                        BackColor = Color.FromArgb(r, g, b);
-                        Thread.Sleep(10);
-                    }
-                }
+    
             }
         }
 
